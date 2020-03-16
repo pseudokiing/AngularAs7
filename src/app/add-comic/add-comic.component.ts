@@ -11,11 +11,13 @@ import { MessageService } from '../services/message.service';
 export class AddComicComponent implements OnInit 
 {
   @Input() startingId: number;
-  @Output() newComicEvent = new EventEmitter<Content> ();
+  @Output() newComicEvent = new EventEmitter<Content>();
+  @Output() updateComicEvent = new EventEmitter<Content>();
     newComicItem: Content;
     currentId: number;
     err = ``;
     success = ``;
+    idBinding: string;
     aliasBinding: any;
     nameBinding: string;
     bodyBinding: any;
@@ -30,51 +32,59 @@ export class AddComicComponent implements OnInit
   }
   addComic(alias: string, name: string, body: string, genre: string, imgUrl: string) 
   {
-    let addNewComic = new Promise((success, fail) =>
-    {
-      try
-      {
-        this.newComicItem = 
-      {
+      //try
+      //{
+        this.newComicItem = {
         id: this.currentId,
         alias,
         name,
         body,
         genre,
         imgUrl 
-      }
+      };
       let title = this.newComicItem.alias;
-      if (this.newComicItem.body)
-      {
-        this.currentId++;
-        this.newComicEvent.emit(this.newComicItem);
-        this.aliasBinding= ``;
-        this.nameBinding= ``;
-        this.bodyBinding= ``;
-        this.genreBinding= ``;
-        this.imgBinding= ``;
+      this.newComicItem.body
+      this.currentId++;
+      this.newComicEvent.emit(this.newComicItem);
+        // this.aliasBinding= ``;
+        // this.nameBinding= ``;
+        // this.bodyBinding= ``;
+        // this.genreBinding= ``;
+        // this.imgBinding= ``;
       
-        success(`The ${title} comic was added succesfully `);
+        //success(`The ${title} comic was added succesfully `);
       }
-      else
-      {
-      throw `Error: Comic not added, please enter a description for the ${title} comic`;
-      }
-    }
-    catch(err)
-    {
-     fail(err)
-    }
-  });
-    addNewComic.then(r => 
-      {
-        let title = this.newComicItem.alias;
-        this.err = ``;
-        this.success = `The ${title} comic was added succesfully `;
-        this.addComicMessage.add(`The ${title} comic was added succesfully`);
-      }).catch(r => { 
-        this.success = ``;
-        this.err = r;
-      })
+    //   else
+    //   {
+    //   throw `Error: Comic not added, please enter a description for the ${title} comic`;
+    //   }
+    // }
+    // catch(err)
+    // {
+    //  fail(err)
+    // }
+  //};
+    // addNewComic.then(r => 
+    //   {
+    //     let title = this.newComicItem.alias;
+    //     this.err = ``;
+    //     this.success = `The ${title} comic was added succesfully `;
+    //     this.addComicMessage.add(`The ${title} comic was added succesfully`);
+    //   }).catch(r => { 
+    //     this.success = ``;
+    //     this.err = r;
+    //   })
+  //}
+  updateComic(id: string, alias: string, name: string, body: string, genre: string, imgUrl: string ): void {
+    this.newComicItem = {
+      id: Number.parseInt(id),
+      alias,
+      name,
+      body,genre,
+      imgUrl
+    };
+    this.updateComicEvent.emit(this.newComicItem);
+    console.log('updateComic');
+    console.log(this.newComicItem);
   }
 }

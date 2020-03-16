@@ -1,3 +1,5 @@
+<div>ID (for updating): <input name="id" [(ngModel)]="idBinding">{{ id }}</div>
+
 <div>Alias: <input name="alias" [(ngModel)]="aliasBinding">{{ alias }}</div>
 
 <div>Name: <input name="name" [(ngModel)]="nameBinding">{{ name }}</div>
@@ -9,4 +11,5 @@
 <div>Cover Art <input name="imgUrl" [(ngModel)]="imgBinding">{{ imgUrl }}<!-- http://insidepulse.com/wp-content/uploads/2016/09/Flash-6-Wally-West-Kid-Flash-DC-Comics-Rebirth-1.jpg  --></div>
 
 <button (click)="addComic(aliasBinding, nameBinding, bodyBinding, genreBinding, imgBinding, errBinding)">Add Comic</button><br/>
+<button (click)="updateComic(idBinding, aliasBinding, nameBinding, bodyBinding, genreBinding, imgBinding, errBinding)">Update Comic</button><br/>
 <span> {{ err }} {{ success }} </span>
