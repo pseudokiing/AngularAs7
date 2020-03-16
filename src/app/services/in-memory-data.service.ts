@@ -11,10 +11,10 @@ export class InMemoryDataService implements InMemoryDbService {
   constructor() { }
 
   createDb() {
-    const content = comicBookList;
-    return {content};
+    const comics = comicBookList;
+    return {comics};
   }
-  genId(content: Content[]): number {
-    return content.length > 0 ? Math.max(...content.map(content => content.id)) + 1 : 2000;
+  genId(comics: Content[]): number {
+    return comics.length > 0 ? Math.max(...comics.map(comics => comics.id)) + 1 : 2000;
   }
 }
