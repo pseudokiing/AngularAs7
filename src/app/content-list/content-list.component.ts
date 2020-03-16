@@ -51,6 +51,7 @@ export class ContentListComponent implements OnInit {
 save(): void {
   this.contentService.addContent(contentItem).subscribe(content => this.content.push(content));
   this.contentService.updateContent(comics).subscribe(() => console.log("content updated"));
+  this.contentService.deleteContent(comics).subscribe(content => this.content.splice(content.id))
 }
 
 }

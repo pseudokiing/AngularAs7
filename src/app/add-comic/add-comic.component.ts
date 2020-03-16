@@ -87,4 +87,7 @@ export class AddComicComponent implements OnInit
     console.log('updateComic');
     console.log(this.newComicItem);
   }
+  deleteComic(id: string, alias: string, name: string, body: string, genre: string, imgUrl: string): void{
+    
+  }
 }

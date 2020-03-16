@@ -28,4 +28,7 @@ export class ContentService {
   updateContent(comics: Content): Observable<any>{
     return this.http.put('api/comics', comics, this.httpOPtions);
   }
+  deleteContent(comics: Content): Observable<any>{
+    return this.http.delete('api/comics');
+  }
 }
